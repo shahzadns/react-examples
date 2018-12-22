@@ -7,7 +7,7 @@
       var createTodo =  function (todo) {
         return <li key={todo.id}>{todo.text}</li>
       };
-    
+
       return <ul> {this.props.todos.map(createTodo)}</ul>;
     }
   });
@@ -34,10 +34,10 @@
       //prevent page from reloading
       e.preventDefault();
 
-      //update todos  
+      //update todos
       this.setState({
         todos: this.state.todos.concat([{ text: this.state.text, id: Date.now() }]),
-        text: '',
+        text: ''
       });
     },
     render: function () {
@@ -47,7 +47,7 @@
           <Todos todos={this.state.todos}/>
           <form onSubmit={this.handleSubmit}>
             <input onChange={this.onChange}
-                   value={this.state.text} 
+                   value={this.state.text}
                    placeholder="Enter your todo here..."/>
             <button disabled={this.state.text.length < 3 }>Add</button>
           </form>
