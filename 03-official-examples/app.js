@@ -158,7 +158,9 @@
 
             <form onSubmit={this.handleSubmit}>
 
+              <label htmlFor="TodoListApp_newTodoText">What needs to be done ?</label><br/>
               <input type="text"
+                     id="TodoListApp_newTodoText"
                      onChange={this.handleChange}
                      value={this.state.newTodoText}/>
 
@@ -248,5 +250,59 @@
   })();
 
   /* app - todoList - ends */
+
+
+  /* app - sample - starts */
+  class MarkDownEditorApp extends React.Component {
+    constructor(props) {
+      super(props);
+
+      console.log('MarkDownEditorApp: constructor:');
+      this.state = {
+        markdownText: 'Hello, **Markdown** !'
+      };
+
+      this.md = new Remarkable();
+
+      this.handleChange = this.handleChange.bind(this);
+    }
+
+    render() {
+      console.log('MarkDownEditorApp: render:');
+
+      return (
+        <div>
+          <h3>Sample App</h3>
+
+          <h5>Input</h5>
+          <label htmlFor="MarkDownEditorApp_markdownText">Enter some markdown</label><br/>
+          <textarea type="text"
+                 id="MarkDownEditorApp_markdownText"
+                 onChange={this.handleChange}
+                 defaultValue={this.state.markdownText}/>
+
+
+          <h5>Output:</h5>
+          <div dangerouslySetInnerHTML={this.getRawMarkup()}></div>
+        </div>
+      );
+    }
+
+    handleChange(event) {
+      console.log('MarkDownEditorApp: handleChange:', event);
+      this.setState({ markdownText: event.target.value });
+    }
+
+    getRawMarkup() {
+      return { __html: this.md.render(this.state.markdownText) };
+    }
+  }
+
+  const mountNode = document.getElementById('MarkDownEditorApp');
+  ReactDOM.render(
+    <MarkDownEditorApp />,
+    mountNode
+  );
+  /* app - sample - ends */
 
 })();

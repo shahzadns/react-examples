@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>03-official-examples</title>
+
   <!-- PROD files (without dev errors)-->
   <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
@@ -15,11 +16,21 @@
 
   <!--Adding babel as advised on offical guideline- it also compile JSX into JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+  <!-- dependencies files -->
+  <script src="https://cdn.jsdelivr.net/npm/remarkable@1.7.1/dist/remarkable.min.js"></script>
+
+  <style>
+    .container{
+      margin: 0 auto;
+      width: 500px;
+    }
+  </style>
 </head>
 <body>
 
 <!--<button onclick="destroyApps()">Destroy Apps</button>-->
-<div id="AllApps">
+<div id="AllApps" class="container">
 
   <div id="HelloWorldApp">
     <!--React app content will be displayed here-->
