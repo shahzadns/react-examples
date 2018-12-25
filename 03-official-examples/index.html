@@ -3,15 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>03-official-examples</title>
-  <script src="https://npmcdn.com/react@15.3.0/dist/react.min.js"></script>
-  <script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.min.js"></script>
+  <!-- PROD files (without dev errors)-->
+  <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+  <!--<script src="https://npmcdn.com/react@15.3.0/dist/react.min.js"></script>-->
+  <!--<script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.min.js"></script>-->
+
+  <!-- DEV files (without dev errors)-->
+  <!--<script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>-->
+  <!--<script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>-->
 
   <!--Adding babel as advised on offical guideline- it also compile JSX into JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
 </head>
 <body>
 
-<div class="apps">
+<!--<button onclick="destroyApps()">Destroy Apps</button>-->
+<div id="AllApps">
 
   <div id="HelloWorldApp">
     <!--React app content will be displayed here-->

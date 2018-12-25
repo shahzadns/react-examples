@@ -1,5 +1,12 @@
 (function () {
 
+
+  /* general functions */
+  // React components (and their lifecycle hooks) don't get know if they are destroyed outside of react. e.g. jquery.
+  //window.destroyApps = function () {
+  //  document.getElementById('AllApps').innerHTML = '';
+  //};
+
   /* app - hello world - starts */
   (function () {
 
@@ -30,28 +37,29 @@
   })();
   /* app - hello world - ends */
 
-  (function () {
-
-  })();
-
   /* app - Timer - starts */
   (function () {
 
-    class Timer extends React.Component {
-      // interval = null;
+    class TimerApp extends React.Component {
+      // intervalId = null;
       // property2 = 'some value';
 
       // to be called when component is initialized in app
       constructor(props) {
+        console.log('constructor');
 
         // call constructor of React.Component class
         super(props);
 
-        this.state = {seconds: 0};
+        this.state = {
+          seconds: 5
+        };
       }
 
       tick() {
-        this.setState(state => ({
+        console.log('tick');
+
+        this.setState((state) => ({
           seconds: state.seconds + 1
         }));
 
@@ -65,22 +73,20 @@
       // to be called after view has been rendered into DOM
       componentDidMount() {
         console.log('componentDidMount: rendered markup available:', !!document.getElementById('wrapper'));
-
-        this.interval = setInterval(() => this.tick(), 1000);
-
-        console.log('interval id:', this.interval); //e.g. 12
+        this.intervalId = setInterval(() => this.tick(), 1000);
       }
 
       // to be called before component gets destroyed
-      componentWillUnmount() {
-        console.log('componentWillUnmount');
-        clearInterval(this.interval);
+      componentWillUnMount() {
+        console.log('componentWillUnMount');
+        clearInterval(this.intervalId);
       }
 
       render() {
         return (
           <div id="wrapper">
-            Seconds: {this.state.seconds}
+            <h3>Tick App:</h3>
+            Seconds: <span class="tick-app-ticks">{this.state.seconds}</span>
           </div>
         );
       }
@@ -88,10 +94,12 @@
 
     const mountNode = document.getElementById('TimerApp');
     ReactDOM.render(
-      <Timer/>,
-      mountNode);
+      <TimerApp />,
+      mountNode
+    );
 
   })();
+
   /* app - hello world - ends */
 
 })();
